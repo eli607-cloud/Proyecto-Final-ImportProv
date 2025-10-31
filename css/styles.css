@@ -1,0 +1,792 @@
+/* montserrat-regular - latin */
+/*
+ * REQUISITO 8 y 12: Declaración de fuente local.
+ * Se implementa la fuente Montserrat mediante @font-face y se llama de forma local
+ * para asegurar la independencia de CDN externas y optimizar la carga.
+ *
+ * NOTA: Solo se incluye el archivo WOFF2 por ser el formato más moderno.
+ */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/montserrat-v31-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
+/* ======================================================= */
+/* 2. VARIABLES Y ESTILOS BASE - REQUISITO 5 */
+/* ======================================================= */
+
+:root {
+    --color-primario: #1a1a1a;     /* Negro para texto y fondo oscuro */
+    --color-secundario: #4A90E2;   /* Azul vibrante (acento principal) */
+    --color-fondo-claro: #f4f4f4;  /* Fondo general del body */
+    --color-acento: #e7e43c;       /* Rojo para botones de "Comprar" */
+    --fuente-principal: 'ImportProvFont', sans-serif;
+}
+
+/* Estilos de Body y Reset */
+body {
+    font-family: var(--fuente-principal);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo-claro);
+    color: var(--color-primario);
+}
+
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 6rem; /* Aumentado de 4.5rem a 6rem (MUCHO más grande) */
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 3.5rem; /* Aumentado de 2.8rem a 3.5rem (Más impacto en secciones) */
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* Estilos de Botón (Opcional: hacer el texto del botón un poco más grande) */
+.btn {
+    display: inline-block;
+    /* ... color de fondo y texto que tuvieras (rojo o negro/amarillo) ... */
+    
+    padding: 24px 60px; /* Aumenta el padding para un botón MUCHO más grande */
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 700; 
+    text-transform: uppercase;
+    
+    /* CAMBIO PRINCIPAL: Aumento del tamaño de la letra */
+    font-size: 1.5rem; /* ¡Aumentado a 1.8rem! */
+    
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #e0ee22;
+}
+
+/* ESTILOS PARA EL ENLACE DE SECCIÓN "ACERCA DE" */
+.btn-acerca {
+    display: block; /* Ocupa todo el ancho */
+    text-decoration: none;
+    background-color: var(--color-primario); /* Fondo oscuro */
+    color: white; 
+    padding: 40px 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 800px;
+    margin: 40px auto;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-acerca:hover {
+    background-color: #333333; /* Un poco más claro al pasar el ratón */
+    transform: translateY(-5px); /* Efecto de elevación */
+}
+
+.btn-acerca h2 {
+    color: white; /* Asegura que el título sea blanco */
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.btn-acerca p {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+/* ======================================================= */
+/* 3. FLEXBOX EN NAVEGACIÓN (HEADER) - REQUISITO 10 */
+/* ======================================================= */
+
+.header {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-principal {
+    /* Justificación Flexbox: Distribuye el logo y el menú horizontalmente. */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1rem 30px;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
+.nav-links ul {
+    /* Justificación Flexbox: Alinea los ítems de navegación. */
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--color-primario);
+    padding: 15px;
+    display: block;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--color-secundario);
+}
+
+.nav-links ul li {
+    /* Esto es NECESARIO si solo el UL padre tiene display: flex */
+    position: relative; 
+}
+
+/* El LI que contiene el dropdown DEBE tener esta clase en el HTML */
+.nav-links ul li.dropdown {
+    position: relative; 
+}
+
+
+/* ======================================================= */
+/* ESTILOS PARA DROPDOWN (SUBMENÚ HOMBRE/MUJER) */
+/* ======================================================= */
+
+.submenu {
+    /* [MODIFICADO] NO usar display: none; */
+    visibility: hidden; /* Oculta el elemento de forma más controlada */
+    opacity: 0;         /* Para crear un efecto de fade-in/fade-out */
+    transition: visibility 0s, opacity 0.3s linear; /* Añadimos la transición */
+    
+    /* CRÍTICO: Posicionamiento Flotante */
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    
+    /* Diseño y Apariencia (Mantenemos todo esto) */
+    min-width: 180px; 
+    background-color: white; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1001; 
+    padding: 0;
+    list-style: none;
+    
+    /* [AÑADIDO] Aseguramos que los ítems se apilen correctamente (display: block; por defecto para el UL) */
+    display: block; 
+}
+
+/* Estilo de los ítems del submenú */
+.submenu li {
+    /* CRÍTICO: Anula el display: flex; que heredaría del menú principal. 
+       Esto hace que los ítems del submenú se apilen verticalmente. */
+    display: block; 
+}
+
+/* Estilo de los enlaces dentro del submenú */
+.submenu li a {
+    padding: 10px 15px;
+    color: var(--color-primario);
+    /* Ya tienes display: block en .nav-links li a, pero lo reafirmamos aquí: */
+    display: block; 
+    white-space: nowrap; 
+}
+
+.submenu li a:hover {
+    background-color: var(--color-fondo-claro); 
+    color: var(--color-secundario);
+}
+
+/* LA MAGIA: Muestra el submenú al pasar el ratón sobre el ítem padre */
+.dropdown:hover .submenu {
+    /* [MODIFICADO] NO usar display: block; */
+    visibility: visible; /* Hacemos visible el elemento */
+    opacity: 1;          /* Lo mostramos completamente */
+}
+
+
+/* ======================================================= */
+/* 4. CARRUSEL Y FLEXBOX EN HERO */
+/* ======================================================= */
+
+.hero {
+    /* CRÍTICO para el carrusel: Define la altura del banner y el contexto de posicionamiento. */
+    height: 60vh; /* ¡CAMBIA ESTE VALOR! (Anteriormente 70vh) */
+    position: relative; 
+    overflow: hidden; 
+    background-color: #1a1a1a; 
+}
+
+
+/*este es el codigo que modifica el nuevos ingresos de la temporada!!! */
+.hero-content p {
+    font-size: 2.5rem; /* ¡Aumentado de 2rem a 2.5rem! */
+    font-weight: 700; 
+    margin-bottom: 30px; 
+    color: white; 
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); 
+
+    /* CRÍTICO: PROPIEDAD DE ANIMACIÓN */
+    animation: parpadeo 1.5s infinite alternate ease-in-out;
+}
+
+
+
+
+/* 4.1. Slideshow (IMAGENES DE FONDO) */
+#hero-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* El 100% de la nueva altura (60vh) */
+}
+
+#hero-slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* El 100% de la nueva altura */
+    object-fit: cover; 
+    opacity: 0; 
+    transition: opacity 1.5s ease-in-out; 
+    z-index: 1; 
+}
+
+#hero-slideshow .slide.active {
+    opacity: 1;
+    z-index: 2; /* La imagen activa se ve */
+}
+
+/* 4.2. Contenido Superior (TEXTO Y BOTÓN) */
+.hero-content {
+    /* CRÍTICO: Posicionamiento absoluto para superponer el texto sobre las imágenes. */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; 
+    
+    /* Justificación Flexbox: Centra el texto vertical y horizontalmente sobre el fondo. */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+
+    text-align: center;
+    color: white; 
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+/* 4.3. FLEXBOX EN CUADRÍCULA DE PRODUCTOS (Destacados/Catálogo) */
+.productos-flex {
+    /* Justificación Flexbox: Permite organizar las tarjetas y que salten de línea en RWD. */
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.producto-item {
+    /* flex-basis asegura un ancho base, y flex-grow permite que crezca si el espacio sobra. */
+    flex-basis: 300px; 
+    flex-grow: 1; 
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    text-align: left;
+}
+
+.producto-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.producto-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.producto-item .precio {
+    text-align: center; /* CRÍTICO: Centra el precio */
+    margin: 15px 0 20px 0; /* Espacio arriba, abajo y nulo a los lados */
+    font-size: 1.8rem; /* Aumenta el tamaño de la fuente */
+    color: var(--color-primario); /* Asegura que el color sea oscuro */
+}
+
+/* Aplicamos negrita a cualquier strong dentro del precio (opcional, 
+   pero ayuda si la negrita no es suficiente en el font-weight por defecto) */
+.producto-item .precio strong {
+    font-weight: 900; /* Asegura el máximo grosor */
+}
+
+.producto-item .btn {
+    display: block; 
+    margin: 15px auto 0 auto; 
+    width: 80%;
+    text-align: center;
+    /* ... (otros estilos de apariencia) ... */
+}
+/* ======================================================= */
+/* 5. RESPONSIVE WEB DESIGN (RWD) - REQUISITO 9 */
+/* ======================================================= */
+
+/* Centra todos los elementos de texto DENTRO de la tarjeta */
+.producto-item {
+    /* ... otros estilos de la tarjeta ... */
+    
+    text-align: center; 
+    
+    /* ... otros estilos de la tarjeta ... */
+}
+
+@media (max-width: 768px) {
+    
+    /* Navegación (Se apila el menú) */
+    .nav-principal {
+        /* Flexbox: Cambia la dirección a columna. */
+        flex-direction: column; 
+        align-items: flex-start;
+        padding: 1rem 15px;
+    }
+
+    .nav-links ul {
+        flex-wrap: wrap; 
+        margin-top: 10px;
+    }
+
+    /* Hero (Se reduce la altura del banner) */
+    .hero {
+        height: 60vh;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Productos (Ocupan todo el ancho) */
+    .producto-item {
+        /* RWD: Ocupa casi todo el ancho disponible para un mejor toque. */
+        flex-basis: 90%; 
+        max-width: 90%;
+    }
+}
+
+
+/* ======================================================= */
+/* 6. PIE DE PÁGINA (FOOTER) */
+/* ======================================================= */
+
+.footer {
+    padding: 30px 20px;
+    background-color: var(--color-primario);
+    color: #bdbdbd;
+    text-align: center;
+}
+
+.footer a {
+    color: var(--color-secundario);
+    font-size: 1.8rem;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+
+
+/* ======================================================= */
+/* ANIMACIÓN: Efecto de Parpadeo (Blink) */
+/* ======================================================= */
+
+@keyframes parpadeo {
+    0% {
+        opacity: 1; /* Al inicio, es completamente visible */
+    }
+    50% {
+        opacity: 0.2; /* A mitad del ciclo, es casi invisible */
+    }
+    100% {
+        opacity: 1; /* Al final, vuelve a ser visible */
+    }
+}
+
+
+
+/* ======================================================= */
+/* ESTILOS PARA LA PÁGINA DE CONTACTO (CONTINUACIÓN) */
+/* ======================================================= */
+
+.contenedor-contacto {
+    /* Mantenemos el Flexbox para la distribución */
+    display: flex; 
+    gap: 40px;
+    max-width: 1000px;
+    margin: 40px auto;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.formulario-container,
+.info-container {
+    flex: 1; 
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px; /* Ligeramente más redondeado */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Sombra más suave */
+    transition: transform 0.3s ease;
+}
+
+.formulario-container:hover {
+    transform: translateY(-5px); /* Pequeño efecto 3D al pasar el ratón */
+}
+
+/* Títulos dentro de los contenedores */
+.formulario-container h3,
+.info-container h3 {
+    /* CRÍTICO: Centra el texto */
+    text-align: center; 
+    
+    /* ... estilos preexistentes ... */
+    color: var(--color-secundario); 
+    border-bottom: 2px solid var(--color-fondo-claro);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px; /* Más espacio entre etiqueta e input */
+    font-weight: 700;
+    color: var(--color-primario);
+    font-size: 1.1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px; /* Más padding para que sean más fáciles de tocar/hacer clic */
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; 
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto al enfocar (hacer clic) en el campo */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--color-secundario); /* El borde se vuelve azul */
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.4); /* Sombra azul para destacar */
+    outline: none; /* Elimina el contorno azul por defecto del navegador */
+}
+
+.form-group textarea {
+    resize: vertical; /* Permite redimensionar solo verticalmente */
+}
+
+/* Estilo del Botón de Enviar (Modificamos el .btn para este contexto) */
+.form-contacto .btn {
+    /* Puedes sobrescribir el tamaño exagerado del Hero aquí, 
+       o simplemente usar el estilo global del .btn */
+    margin-top: 15px;
+    width: 100%; /* El botón ocupa todo el ancho del formulario */
+    padding: 15px 0;
+    font-size: 1.2rem;
+    background-color: var(--color-secundario); /* Cambiamos a azul para contraste con el Hero */
+}
+
+.form-contacto .btn:hover {
+    background-color: #387bd8; /* Un azul ligeramente más oscuro */
+}
+
+/* Íconos y texto de la información de contacto */
+.info-container p {
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+.info-container i {
+    margin-right: 10px;
+    color: var(--color-secundario); /* Íconos en color azul */
+}
+
+.mapa-container {
+    margin-top: 30px;
+    border: 1px solid #ddd;
+    padding: 0;
+    text-align: center;
+    overflow: hidden; /* Asegura que el contenido (mapa) no desborde */
+    border-radius: 8px;
+}
+
+.mapa-container p {
+    font-size: 0.9rem;
+    padding: 10px;
+    background-color: var(--color-fondo-claro);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    /* ... otros estilos RWD ... */
+
+    .contenedor-contacto {
+        flex-direction: column; /* Apila el formulario y la info en móvil */
+        margin: 20px auto;
+    }
+    
+    /* Reajuste del botón para que no sea tan grande */
+    .form-contacto .btn {
+        font-size: 1rem;
+        padding: 12px 0;
+    }
+
+    /* ... el resto de los estilos RWD ... */
+}
+
+
+/* Estilos para carrito.css */
+
+.contenedor-carrito {
+    display: flex;
+    gap: 40px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: left;
+}
+
+.lista-items {
+    flex: 2; /* Ocupa más espacio */
+}
+
+.resumen-carrito {
+    flex: 1;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.item-carrito:last-child {
+    border-bottom: none;
+}
+
+.item-detalle {
+    flex-grow: 1;
+}
+
+.item-detalle h4 {
+    margin: 0 0 5px 0;
+    color: var(--color-primario);
+}
+
+.item-detalle p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.item-acciones {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.item-acciones input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-eliminar {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.btn-eliminar:hover {
+    color: darkred;
+}
+
+.total-line {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid var(--color-fondo-claro);
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-finalizar {
+    width: 100%;
+    margin-top: 20px;
+    background-color: var(--color-secundario);
+    color: white;
+}
+
+.btn-vaciar {
+    width: 100%;
+    margin-top: 10px;
+    background-color: #ccc;
+    color: var(--color-primario);
+}
+
+/* RWD */
+@media (max-width: 768px) {
+    .contenedor-carrito {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .item-carrito {
+        flex-wrap: wrap;
+    }
+}
+
+/* ======================================================= */
+/* ESTILOS PARA ENLACE DESTACADO EN INDEX.HTML */
+/* ======================================================= */
+
+.enlace-destacado {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.enlace-destacado h2 {
+    /* Mantén el estilo de título grande, pero hazlo interactivo */
+    color: var(--color-primario); /* Tu color principal */
+    font-size: 2.2rem;
+    padding: 10px 0;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--color-acento); /* Línea de acento */
+    display: inline-block; /* Para que la línea solo cubra el texto */
+    cursor: pointer;
+}
+
+.enlace-destacado:hover h2 {
+    color: var(--color-secundario); /* Cambia el color al pasar el ratón */
+}
+
+
+/* ======================================================= */
+/* ESTILOS PARA LA PÁGINA PRODUCTO-SEMANA.HTML */
+/* ======================================================= */
+
+.titulo-destacado {
+    text-align: center;
+    color: var(--color-acento);
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.producto-destacado-card {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.imagen-destacada {
+    flex: 1;
+    min-width: 400px; 
+    
+    /* Agregamos un fondo para ver dónde termina la imagen */
+    background-color: var(--color-fondo-claro); /* Usa un color muy claro */
+    padding: 20px; /* Añade un poco de aire */
+}
+
+.imagen-destacada img {
+    width: 100%;
+    height: 100%;
+    
+    /* CRÍTICO: Cambia 'cover' (cortar) por 'contain' (mostrar entera) */
+    object-fit: contain; 
+}
+
+.info-destacada {
+    flex: 1.5;
+    padding: 40px;
+}
+
+.info-destacada h3 {
+    color: var(--color-primario);
+    font-size: 1.8rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.info-destacada ul {
+    list-style: none;
+    padding: 0;
+}
+
+.precio-destacado {
+    margin: 30px 0;
+}
+
+.precio-anterior {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 1.1rem;
+}
+
+.precio-actual {
+    color: var(--color-acento);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* RWD para apilar en móviles */
+@media (max-width: 768px) {
+    .producto-destacado-card {
+        flex-direction: column;
+    }
+    .imagen-destacada {
+        min-width: auto;
+        height: 300px; /* Fija la altura de la imagen en móvil */
+    }
+}
