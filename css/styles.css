@@ -1,6 +1,6 @@
 /* montserrat-regular - latin */
 /*
- * REQUISITO 8 y 12: Declaración de fuente local.
+ 
  * Se implementa la fuente Montserrat mediante @font-face y se llama de forma local
  * para asegurar la independencia de CDN externas y optimizar la carga.
  *
@@ -16,7 +16,7 @@
 
 
 /* ======================================================= */
-/* 2. VARIABLES Y ESTILOS BASE - REQUISITO 5 */
+/* VARIABLES Y ESTILOS BASE 
 /* ======================================================= */
 
 :root {
@@ -43,20 +43,20 @@ body {
 }
 
 h1 {
-    font-size: 6rem; /* Aumentado de 4.5rem a 6rem (MUCHO más grande) */
+    font-size: 6rem; 
     margin-bottom: 25px;
 }
 
 h2 {
-    font-size: 3.5rem; /* Aumentado de 2.8rem a 3.5rem (Más impacto en secciones) */
+    font-size: 3.5rem; 
     margin-bottom: 40px;
     font-weight: 700;
 }
 
-/* Estilos de Botón (Opcional: hacer el texto del botón un poco más grande) */
+/* Estilos de Botón */
 .btn {
     display: inline-block;
-    /* ... color de fondo y texto que tuvieras (rojo o negro/amarillo) ... */
+    /* ... color de fondo y texto  (rojo o negro/amarillo) ... */
     
     padding: 24px 60px; /* Aumenta el padding para un botón MUCHO más grande */
     text-decoration: none;
@@ -64,8 +64,8 @@ h2 {
     font-weight: 700; 
     text-transform: uppercase;
     
-    /* CAMBIO PRINCIPAL: Aumento del tamaño de la letra */
-    font-size: 1.5rem; /* ¡Aumentado a 1.8rem! */
+    /*  Aumento del tamaño de la letra */
+    font-size: 1.5rem; 
     
     transition: background-color 0.3s;
 }
@@ -90,7 +90,7 @@ h2 {
 }
 
 .btn-acerca:hover {
-    background-color: #333333; /* Un poco más claro al pasar el ratón */
+    background-color: #333333; /* Un poco más claro al pasar el mouse */
     transform: translateY(-5px); /* Efecto de elevación */
 }
 
@@ -106,7 +106,7 @@ h2 {
 }
 
 /* ======================================================= */
-/* 3. FLEXBOX EN NAVEGACIÓN (HEADER) - REQUISITO 10 */
+/* FLEXBOX EN NAVEGACIÓN (HEADER) 
 /* ======================================================= */
 
 .header {
@@ -118,7 +118,8 @@ h2 {
 }
 
 .nav-principal {
-    /* Justificación Flexbox: Distribuye el logo y el menú horizontalmente. */
+    /* 
+    Flexbox: Distribuye el logo y el menú horizontalmente. */
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
@@ -153,11 +154,11 @@ h2 {
 }
 
 .nav-links ul li {
-    /* Esto es NECESARIO si solo el UL padre tiene display: flex */
+    
     position: relative; 
 }
 
-/* El LI que contiene el dropdown DEBE tener esta clase en el HTML */
+/* El LI que contiene el dropdown */
 .nav-links ul li.dropdown {
     position: relative; 
 }
@@ -186,7 +187,7 @@ h2 {
     padding: 0;
     list-style: none;
     
-    /* [AÑADIDO] Aseguramos que los ítems se apilen correctamente (display: block; por defecto para el UL) */
+    /*  Asegurao que los ítems se apilen correctamente */
     display: block; 
 }
 
@@ -201,7 +202,7 @@ h2 {
 .submenu li a {
     padding: 10px 15px;
     color: var(--color-primario);
-    /* Ya tienes display: block en .nav-links li a, pero lo reafirmamos aquí: */
+    
     display: block; 
     white-space: nowrap; 
 }
@@ -211,9 +212,9 @@ h2 {
     color: var(--color-secundario);
 }
 
-/* LA MAGIA: Muestra el submenú al pasar el ratón sobre el ítem padre */
+/* Muestra el submenú al pasar el ratón sobre el ítem padre */
 .dropdown:hover .submenu {
-    /* [MODIFICADO] NO usar display: block; */
+    
     visibility: visible; /* Hacemos visible el elemento */
     opacity: 1;          /* Lo mostramos completamente */
 }
@@ -225,7 +226,7 @@ h2 {
 
 .hero {
     /* CRÍTICO para el carrusel: Define la altura del banner y el contexto de posicionamiento. */
-    height: 60vh; /* ¡CAMBIA ESTE VALOR! (Anteriormente 70vh) */
+    height: 60vh; 
     position: relative; 
     overflow: hidden; 
     background-color: #1a1a1a; 
@@ -234,7 +235,7 @@ h2 {
 
 /*este es el codigo que modifica el nuevos ingresos de la temporada!!! */
 .hero-content p {
-    font-size: 2.5rem; /* ¡Aumentado de 2rem a 2.5rem! */
+    font-size: 2.5rem; 
     font-weight: 700; 
     margin-bottom: 30px; 
     color: white; 
@@ -253,7 +254,7 @@ h2 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* El 100% de la nueva altura (60vh) */
+    height: 100%; 
 }
 
 #hero-slideshow .slide {
@@ -261,7 +262,7 @@ h2 {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; /* El 100% de la nueva altura */
+    height: 100%; 
     object-fit: cover; 
     opacity: 0; 
     transition: opacity 1.5s ease-in-out; 
@@ -275,7 +276,7 @@ h2 {
 
 /* 4.2. Contenido Superior (TEXTO Y BOTÓN) */
 .hero-content {
-    /* CRÍTICO: Posicionamiento absoluto para superponer el texto sobre las imágenes. */
+    /*  Posicionamiento absoluto para superponer el texto sobre las imágenes. */
     position: absolute; 
     top: 0;
     left: 0;
@@ -296,7 +297,7 @@ h2 {
 
 /* 4.3. FLEXBOX EN CUADRÍCULA DE PRODUCTOS (Destacados/Catálogo) */
 .productos-flex {
-    /* Justificación Flexbox: Permite organizar las tarjetas y que salten de línea en RWD. */
+    /* Flexbox: Permite organizo las tarjetas y que salten de línea en RWD. */
     display: flex; 
     flex-wrap: wrap; 
     justify-content: center; 
@@ -330,14 +331,13 @@ h2 {
 }
 
 .producto-item .precio {
-    text-align: center; /* CRÍTICO: Centra el precio */
+    text-align: center; /* Centra el precio */
     margin: 15px 0 20px 0; /* Espacio arriba, abajo y nulo a los lados */
     font-size: 1.8rem; /* Aumenta el tamaño de la fuente */
     color: var(--color-primario); /* Asegura que el color sea oscuro */
 }
 
-/* Aplicamos negrita a cualquier strong dentro del precio (opcional, 
-   pero ayuda si la negrita no es suficiente en el font-weight por defecto) */
+/* Aplicamos negrita a cualquier strong dentro del precio  */
 .producto-item .precio strong {
     font-weight: 900; /* Asegura el máximo grosor */
 }
@@ -347,19 +347,19 @@ h2 {
     margin: 15px auto 0 auto; 
     width: 80%;
     text-align: center;
-    /* ... (otros estilos de apariencia) ... */
+    
 }
 /* ======================================================= */
-/* 5. RESPONSIVE WEB DESIGN (RWD) - REQUISITO 9 */
+/* RESPONSIVE WEB DESIGN (RWD) 
 /* ======================================================= */
 
 /* Centra todos los elementos de texto DENTRO de la tarjeta */
 .producto-item {
-    /* ... otros estilos de la tarjeta ... */
+    /*  otros estilos de la tarjeta  */
     
     text-align: center; 
     
-    /* ... otros estilos de la tarjeta ... */
+    /* otros estilos de la tarjeta  */
 }
 
 @media (max-width: 768px) {
@@ -396,7 +396,7 @@ h2 {
 
 
 /* ======================================================= */
-/* 6. PIE DE PÁGINA (FOOTER) */
+/* PIE DE PÁGINA (FOOTER) */
 /* ======================================================= */
 
 .footer {
@@ -417,7 +417,7 @@ h2 {
 
 
 /* ======================================================= */
-/* ANIMACIÓN: Efecto de Parpadeo (Blink) */
+/* ANIMACIÓN: Efecto de Parpadeo  */
 /* ======================================================= */
 
 @keyframes parpadeo {
@@ -465,7 +465,7 @@ h2 {
 /* Títulos dentro de los contenedores */
 .formulario-container h3,
 .info-container h3 {
-    /* CRÍTICO: Centra el texto */
+    /* Centra el texto */
     text-align: center; 
     
     /* ... estilos preexistentes ... */
@@ -693,7 +693,7 @@ h2 {
 }
 
 .enlace-destacado h2 {
-    /* Mantén el estilo de título grande, pero hazlo interactivo */
+    
     color: var(--color-primario); /* Tu color principal */
     font-size: 2.2rem;
     padding: 10px 0;
@@ -704,7 +704,7 @@ h2 {
 }
 
 .enlace-destacado:hover h2 {
-    color: var(--color-secundario); /* Cambia el color al pasar el ratón */
+    color: var(--color-secundario); /* Cambia el color al pasar el mouse */
 }
 
 
@@ -742,7 +742,7 @@ h2 {
     width: 100%;
     height: 100%;
     
-    /* CRÍTICO: Cambia 'cover' (cortar) por 'contain' (mostrar entera) */
+    /*  Cambia 'cover' (cortar) por 'contain' (mostrar entera) */
     object-fit: contain; 
 }
 
