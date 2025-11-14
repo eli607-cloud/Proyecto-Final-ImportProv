@@ -9,71 +9,153 @@
     <title>ImportProv | Zapatillas Exclusivas</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    
     <link rel="stylesheet" href="css/styles.css">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 
-    </head>
 <body>
     <header class="header">
-    <nav class="nav-principal">
-        <a href="index.html" class="logo">ImportProv</a>
-        <div class="nav-links">
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
+        <nav class="nav-principal">
+            <a href="index.html" class="logo">ImportProv</a>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
 
-                <li class="dropdown">
-                    <a href="catalogo-completo.html">Catálogo</a> 
-                    <ul class="submenu">
-                        <li><a href="galeria-hombre.html">Hombre</a></li>
-                        <li><a href="galeria-mujer.html">Mujer</a></li>
-                    </ul>
-                </li>
-                <li><a href="contacto.html">Contacto</a></li> 
-                <li><a href="#" id="carrito-btn">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span id="contador-carrito">0</span>
-                    </a>
-                </li>
-            </ul> 
-        </div>
-    </nav>
-</header>
+                    <li class="dropdown">
+                        <a href="catalogo-completo.html">Catálogo</a> 
+                        <ul class="submenu">
+                            <li><a href="galeria-hombre.html">Hombre</a></li>
+                            <li><a href="galeria-mujer.html">Mujer</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contacto.html">Contacto</a></li> 
+                    <li>
+                        <a href="#" id="carrito-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span id="contador-carrito">0</span>
+                        </a>
+                    </li>
+                </ul> 
+            </div>
+        </nav>
+    </header>
 
     <main class="hero">
-    <div id="hero-slideshow">
-        <img src="img/zapatilla-fondo-1.webp" alt="Zapatilla de fondo 1" class="slide active">
-        <img src="img/zapatilla-fondo-2.webp" alt="Zapatilla de fondo 2" class="slide">
-        <img src="img/zapatilla-fondo-3.webp" alt="Zapatilla de fondo 3" class="slide">
-    </div>
-    
-    <section class="hero-content">
-        <h1>El Estilo Camina Con Vos.</h1>
-        <p>Nuevos ingresos de la temporada. ¡Stock limitado!</p>
-        <a href="catalogo-completo.html" class="btn">Ver Catálogo</a>
-    </section>
-</main>
+        <div id="hero-slideshow">
+            <img src="img/zapatilla-fondo-1.webp" alt="Zapatilla de fondo 1" class="slide active">
+            <img src="img/zapatilla-fondo-2.webp" alt="Zapatilla de fondo 2" class="slide">
+            <img src="img/zapatilla-fondo-3.webp" alt="Zapatilla de fondo 3" class="slide">
+        </div>
+        
+        <section class="hero-content">
+            <h1>El Estilo Camina Con Vos.</h1>
+            <p>Nuevos ingresos de la temporada. ¡Stock limitado!</p>
+            <a href="catalogo-completo.html" class="btn">Ver Catálogo</a>
+        </section>
+    </main>
+
+    <!-- agrugue el aside que me faltaba -->
+    <aside class="aside-promos">
+        <h2>Promociones y Novedades</h2>
+        <ul>
+            <li>🔥 20% de descuento en modelos Nike Air</li>
+            <li>🆕 Nuevas Adidas Ultraboost disponibles</li>
+            <li>🚚 Envío gratis en compras mayores a $130.000</li>
+            <li><a href="suscripcion.html" class="btn-secundario">Suscríbete a nuestro boletín</a></li>
+        </ul>
+    </aside>
 
     <section id="destacados" class="section">
         <a href="producto-semana.html" class="enlace-destacado">
             <h2>Zapatillas Destacadas</h2>
         </a>
-        
-        <div class="productos-flex">
-            </div>
+        <div class="productos-flex"></div>
     </section>
 
     <section id="acerca" class="section">
-    <a href="acerca-de.html" class="btn-acerca">
-        <h2>Acerca de ImportProv</h2>
-        <p>Conoce nuestra historia, misión y valores. (Haz clic aquí)</p>
-    </a>
-</section>
+        <a href="acerca-de.html" class="btn-acerca">
+            <h2>Acerca de ImportProv</h2>
+            <p>Conoce nuestra historia, misión y valores. (Haz clic aquí)</p>
+        </a>
+    </section>
+
+    <!-- 📦 Sección 1: Cómo Comprar -->
+    <section id="como-comprar" class="section">
+        <h2>Cómo Comprar</h2>
+        <div class="productos-flex">
+            <div class="producto-item">
+                <i class="fas fa-search fa-2x"></i>
+                <h3>1. Elegí tu modelo</h3>
+                <p>Explorá nuestro catálogo y seleccioná tus zapatillas favoritas.</p>
+            </div>
+            <div class="producto-item">
+                <i class="fas fa-shopping-cart fa-2x"></i>
+                <h3>2. Agregá al carrito</h3>
+                <p>Revisá talles, colores y cantidades antes de añadir el producto.</p>
+            </div>
+            <div class="producto-item">
+                <i class="fas fa-truck fa-2x"></i>
+                <h3>3. Recibí tu pedido</h3>
+                <p>Completá tus datos y recibí tus zapatillas en la puerta de tu casa.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📏 Sección 2: Tabla de Talles -->
+    <section id="tabla-talles" class="section" style="background-color: white;">
+        <h2>Tabla de Medidas y Talles</h2>
+        <div class="tabla-talles-container">
+            <table class="tabla-talles">
+                <thead>
+                    <tr>
+                        <th>Talle (AR)</th>
+                        <th>CM (Largo del pie)</th>
+                        <th>Talle (US)</th>
+                        <th>Talle (EU)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>38</td><td>24.0</td><td>6.5</td><td>39</td></tr>
+                    <tr><td>39</td><td>24.5</td><td>7</td><td>40</td></tr>
+                    <tr><td>40</td><td>25.0</td><td>7.5</td><td>41</td></tr>
+                    <tr><td>41</td><td>26.0</td><td>8.5</td><td>42</td></tr>
+                    <tr><td>42</td><td>26.5</td><td>9</td><td>43</td></tr>
+                    <tr><td>43</td><td>27.5</td><td>10</td><td>44</td></tr>
+                    <tr><td>44</td><td>28.0</td><td>10.5</td><td>45</td></tr>
+                </tbody>
+            </table>
+            <p class="nota-talles">📏 Consejo: Medí tu pie desde el talón hasta la punta del dedo más largo y compará con la tabla.</p>
+        </div>
+    </section>
+
+    <!-- ❓ Sección 3: Preguntas Frecuentes -->
+    <section id="faq" class="section">
+        <h2>Preguntas Frecuentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <h3>¿Hacen envíos a todo el país?</h3>
+                <p>Sí, realizamos envíos a todas las provincias de Argentina mediante correo certificado.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Cuánto tarda el envío?</h3>
+                <p>Los envíos suelen demorar entre 3 y 7 días hábiles, dependiendo de tu ubicación.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Qué métodos de pago aceptan?</h3>
+                <p>Aceptamos tarjetas de crédito, débito, transferencia bancaria y Mercado Pago.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Puedo cambiar o devolver un producto?</h3>
+                <p>Sí, dentro de los primeros 10 días luego de la entrega, siempre que esté en perfecto estado.</p>
+            </div>
+        </div>
+    </section>
+
+
 
     <footer class="footer">
         <p>&copy; 2024 ImportProv.</p>
-        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/fitpromax2?igsh=NmUzZmwwNGNwY3U0"><i class="fab fa-instagram"></i></a>
     </footer>
     
     <script src="js/script.js"></script>

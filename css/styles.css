@@ -1,11 +1,5 @@
-/* montserrat-regular - latin */
-/*
- 
- * Se implementa la fuente Montserrat mediante @font-face y se llama de forma local
- * para asegurar la independencia de CDN externas y optimizar la carga.
- *
- * NOTA: Solo se incluye el archivo WOFF2 por ser el formato más moderno.
- */
+
+/** USO la fuente Montserrat mediante @font-face y se llama de forma locaL para optimizar la carga.*/
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
   font-family: 'Montserrat';
@@ -58,13 +52,13 @@ h2 {
     display: inline-block;
     /* ... color de fondo y texto  (rojo o negro/amarillo) ... */
     
-    padding: 24px 60px; /* Aumenta el padding para un botón MUCHO más grande */
+    padding: 24px 60px; /* AUMENTE el padding para un botón MUCHO más grande */
     text-decoration: none;
     border-radius: 5px;
     font-weight: 700; 
     text-transform: uppercase;
     
-    /*  Aumento del tamaño de la letra */
+    /*  LE AUMENTO EL TAMAÑO DE LA LETRAA */
     font-size: 1.5rem; 
     
     transition: background-color 0.3s;
@@ -95,7 +89,7 @@ h2 {
 }
 
 .btn-acerca h2 {
-    color: white; /* Asegura que el título sea blanco */
+    color: white; /* ME ASEGURO que el título sea blanco */
     margin-top: 0;
     margin-bottom: 5px;
 }
@@ -119,7 +113,7 @@ h2 {
 
 .nav-principal {
     /* 
-    Flexbox: Distribuye el logo y el menú horizontalmente. */
+    USO FLEXBOX PARA DISTRIBUIR el logo y el menú horizontalmente. */
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
@@ -164,9 +158,8 @@ h2 {
 }
 
 
-/* ======================================================= */
-/* ESTILOS PARA DROPDOWN (SUBMENÚ HOMBRE/MUJER) */
-/* ======================================================= */
+
+/* ESTILOS PARA DROPDOWN (SUBMENÚ HOMBRE/MUJER) ----------------------*/
 
 .submenu {
     /* [MODIFICADO] NO usar display: none; */
@@ -179,7 +172,7 @@ h2 {
     top: 100%; 
     left: 0;
     
-    /* Diseño y Apariencia (Mantenemos todo esto) */
+    /* Diseño y Apariencia  */
     min-width: 180px; 
     background-color: white; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -220,9 +213,9 @@ h2 {
 }
 
 
-/* ======================================================= */
-/* 4. CARRUSEL Y FLEXBOX EN HERO */
-/* ======================================================= */
+
+/* -----------ESTO ES  CARRUSEL Y FLEXBOX EN HERO -----------------------*/
+
 
 .hero {
     /* CRÍTICO para el carrusel: Define la altura del banner y el contexto de posicionamiento. */
@@ -233,7 +226,7 @@ h2 {
 }
 
 
-/*este es el codigo que modifica el nuevos ingresos de la temporada!!! */
+/*este es el codigo que modifica el NUEVOS INGRESOS DE LA TEMPORADA!!! */
 .hero-content p {
     font-size: 2.5rem; 
     font-weight: 700; 
@@ -248,7 +241,7 @@ h2 {
 
 
 
-/* 4.1. Slideshow (IMAGENES DE FONDO) */
+/*  Slideshow (IMAGENES DE FONDO) */
 #hero-slideshow {
     position: absolute;
     top: 0;
@@ -337,7 +330,7 @@ h2 {
     color: var(--color-primario); /* Asegura que el color sea oscuro */
 }
 
-/* Aplicamos negrita a cualquier strong dentro del precio  */
+/* AplicAMOS negrita a cualquier strong dentro del precio  */
 .producto-item .precio strong {
     font-weight: 900; /* Asegura el máximo grosor */
 }
@@ -350,8 +343,9 @@ h2 {
     
 }
 /* ======================================================= */
-/* RESPONSIVE WEB DESIGN (RWD) 
-/* ======================================================= */
+
+/*  ACA USAMOS RESPONSIVE WEB DESIGN (RWD) 
+
 
 /* Centra todos los elementos de texto DENTRO de la tarjeta */
 .producto-item {
@@ -434,9 +428,9 @@ h2 {
 
 
 
-/* ======================================================= */
-/* ESTILOS PARA LA PÁGINA DE CONTACTO (CONTINUACIÓN) */
-/* ======================================================= */
+
+/* APLICO ESTILOS PARA LA PÁGINA DE CONTACTO (CONTINUACIÓN) */
+
 
 .contenedor-contacto {
     /* Mantenemos el Flexbox para la distribución */
@@ -681,9 +675,9 @@ h2 {
     }
 }
 
-/* ======================================================= */
+
 /* ESTILOS PARA ENLACE DESTACADO EN INDEX.HTML */
-/* ======================================================= */
+
 
 .enlace-destacado {
     display: block;
@@ -708,9 +702,9 @@ h2 {
 }
 
 
-/* ======================================================= */
+
 /* ESTILOS PARA LA PÁGINA PRODUCTO-SEMANA.HTML */
-/* ======================================================= */
+
 
 .titulo-destacado {
     text-align: center;
@@ -787,6 +781,197 @@ h2 {
     }
     .imagen-destacada {
         min-width: auto;
-        height: 300px; /* Fija la altura de la imagen en móvil */
+        height: 300px; /* Fija la altura de la imagen en EL TELEFONO */
     }
+}
+
+/* ACA LO QUE HICE ES PONERLE ESTILOS AL ASIDE (PROMOCIONES Y NOVEDADES) */
+
+
+.aside-promos {
+    background-color: white;
+    border: 2px solid var(--color-acento); 
+    border-radius: 10px;
+    padding: 40px 30px;
+    margin: 60px auto;
+    max-width: 900px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.aside-promos h2 {
+    color: var(--color-primario);
+    font-size: 2rem;
+    margin-bottom: 25px;
+    border-bottom: 3px solid var(--color-secundario);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.aside-promos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-primario);
+    line-height: 1.8;
+}
+
+.aside-promos li {
+    margin-bottom: 12px;
+}
+
+.aside-promos a.btn-secundario {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: var(--color-secundario);
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.aside-promos a.btn-secundario:hover {
+    background-color: #387bd8;
+}
+
+
+
+
+/*SECCION DE COMO COMPRAR */
+#como-comprar i {
+    color: var(--color-secundario);
+    margin-bottom: 10px;
+}
+#como-comprar h3 {
+    margin-top: 10px;
+    color: var(--color-primario);
+}
+
+/* === TABLA DE TALLES === */
+.tabla-talles-container {
+    max-width: 800px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+.tabla-talles {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+.tabla-talles th,
+.tabla-talles td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+.tabla-talles th {
+    background-color: var(--color-secundario);
+    color: white;
+    font-weight: 700;
+}
+.tabla-talles tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+.nota-talles {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* PRGUNTAS FRECUENTES */
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+.faq-item {
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+.faq-item:hover {
+    transform: translateY(-5px);
+}
+.faq-item h3 {
+    color: var(--color-secundario);
+    margin-bottom: 10px;
+}
+.faq-item p {
+    margin: 0;
+    color: var(--color-primario);
+    font-size: 1rem;
+}
+
+/* RWD */
+@media (max-width: 768px) {
+    .tabla-talles th, .tabla-talles td {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+    .faq-item {
+        padding: 15px;
+    }
+}
+
+
+
+/* ACA HICE UNA PÁGINA DE SUSCRIPCIÓN */
+#suscripcion {
+    max-width: 600px;
+    margin: 60px auto;
+    text-align: center;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#suscripcion h1 {
+    margin-bottom: 15px;
+    color: var(--color-secundario);
+}
+
+.form-suscripcion {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.form-suscripcion label {
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-suscripcion input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-suscripcion .btn {
+    background-color: var(--color-secundario);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form-suscripcion .btn:hover {
+    background-color: #333;
+}
+
+.nota {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #555;
 }
